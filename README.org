@@ -6,17 +6,16 @@
   :PROPERTIES:
   :header-args: :tangle prepare-sd-card.sh :comments both
   :END:
-** Plug-in the SD card
-** Install Raspberry Pi Imager
-   #+BEGIN_SRC shell :results output
-     yay -Sy rpi-imager
-     whereis rpi-imager
-   #+END_SRC
-** Flash UBUNTU 20.04 LTS (PI 2/3/4)
-   #+BEGIN_SRC shell
-     rpi-imager
-   #+END_SRC
-* 
+*** Plug-in the SD card
+*** Install Raspberry Pi Imager
+    #+BEGIN_SRC shell :results output
+      yay -Sy rpi-imager
+      whereis rpi-imager
+    #+END_SRC
+*** Flash UBUNTU 20.04 LTS (PI 2/3/4)
+    #+BEGIN_SRC shell
+      rpi-imager
+    #+END_SRC
 * Pre-requisites
 ** Raspberry
 - [X] Raspbian: the official OS for the Raspberry Pi.
