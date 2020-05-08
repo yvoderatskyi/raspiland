@@ -4,30 +4,29 @@
 
 This project contains configurations for my Raspberry Pi (RPi)
 
-* Preparing SD card
+* Pre-requisites
+*** Your machine
+ - [X] =Arch= based OS (for example, =Manjaro=) with =yay= package installed
+ - [X] =Python 3.7+= and =poetry= installed
+*** Raspberry
+ - [X] Internet connectivity: Ethernet or Wi-Fi
+ - [X] SSH access enabled
+* Preparing for RPi OS for installation
   :PROPERTIES:
   :header-args: :tangle prepare-sd-card.sh :comments both
   :END:
 *** Plug-in the SD card
-*** Install Raspberry Pi Imager: The official app to flash RPi images
+*** Install =Raspberry Pi Imager=: The official app to flash RPi images
     #+BEGIN_SRC shell :results output
       yay -Sy rpi-imager
       whereis rpi-imager
     #+END_SRC
-*** Flash UBUNTU 20.04 LTS (PI 2/3/4)
+*** Flash =Ubuntu= to the SD card
     #+BEGIN_SRC shell
       rpi-imager
     #+END_SRC
     Select =Operating System=, =SD Card= and click on =WRITE= button. Wait for completion of the installation and verification.
     [[./images/pi-imager.png]]
-* Pre-requisites
-** Raspberry
-- [X] Raspbian: the official OS for the Raspberry Pi.
-- [X] Internet connectivity: Ethernet or Wi-Fi
-- [X] SSH access enabled
-** Your machine
-- [X] sshpass installed
-- [X] Python 3.7+ and poetry installed
 * Let's get started
 ** Check SSH connection
     #+BEGIN_SRC shell :tangle check.sh :comments both
