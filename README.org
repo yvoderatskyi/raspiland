@@ -79,11 +79,11 @@ This project contains configurations for my Raspberry Pi (RPi)
 * Let's get started
 ** Check SSH connection
     #+BEGIN_SRC shell :tangle 20-check.sh :comments both
-      poetry run ansible all -i hosts.ini -m ping -u pi --ask-pass
+      poetry run ansible raspberry -i hosts.ini -m ping -u pi --ask-pass
     #+END_SRC
  
      #+BEGIN_EXAMPLE
-     ➜  poetry run ansible-host ansible all -i hosts.ini -m ping -u pi --ask-pass
+     ➜  poetry run ansible raspberry -i hosts.ini -m ping
      SSH password:
      [WARNING]: Platform linux on host 192.168.1.112 is using the discovered Python interpreter at
      /usr/bin/python, but future installation of another Python interpreter could change this. See
@@ -97,9 +97,16 @@ This project contains configurations for my Raspberry Pi (RPi)
      "ping": "pong"
      }
    #+END_EXAMPLE
+** Install ansible roles
+   #+BEGIN_SRC shell :tangle check.sh :comments both
+   poetry run ansible-galaxy role install -r requirements.yaml -p ./roles
+   #+END_SRC
+
+   #+RESULTS:
 
 * Links
 - Raspbian: https://www.raspberrypi.org/downloads/raspbian/
 - Raspbian Wi-Fi: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
 - Raspbian SSH: https://www.raspberrypi.org/documentation/remote-access/ssh/
+- Raspbian passwordless SSH: https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
 - Ansible Documentation: https://docs.ansible.com/
