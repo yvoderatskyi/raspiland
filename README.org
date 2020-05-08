@@ -39,6 +39,7 @@ This project contains configurations for my Raspberry Pi (RPi)
       echo 'Please select your WI-Fi interface and network for RPi to connect to...'
       SSID=$(ip link | grep -Po "(?<=^\d:\W).*?(?=:)" | yank | xargs -I % sh -c 'sudo iwlist % scan' | grep -Po "(?<=ESSID:\").*(?=\")" | yank -l)
       [ -n $SSID ] || exit -1
+
       echo ''
       echo "Please, enter the password to connect to ${SSID}"
       echo -n 'Password:'
@@ -50,10 +51,14 @@ This project contains configurations for my Raspberry Pi (RPi)
       MNT_DIR=$(sudo mount | yank)
       [ -n $MTN_DIR ] || exit -1
       echo "System boot parition is mounted to ${MNT_DIR}"
+
       echo "Creating empty file at ${MNT_DIR}/ssh"
       [ -f ${MNT_DIR}/ssh ] || sudo tee -a ${MNT_DIR}/ssh < "" || echo exit -1
+
       echo "Disabling expiration of the user"
       sudo sed -i.bak 's/expire:\ true/expire: false/' ${MNT_DIR}/user-data
+
+      echo "Setting Wi-Fi configuration to ${MNT_DIR}/network-config"
       sudo tee -a ${MNT_DIR}/network-config <<EOF
       wifis:
         wlan0:
