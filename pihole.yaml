@@ -1,10 +1,11 @@
 ---
 - hosts: raspberry
+  become: yes
   pre_tasks:
     - name: Update all packages to the latest version
       apt:
         upgrade: dist
-      become: yes
+        update_cache: true
   tasks:
     - name: Install additional packages
       apt:
@@ -12,17 +13,23 @@
         - python3-pip
         - docker-compose
         - docker.io
-      become: yes
-    - name: Alter user 'ubuntu' to allow access to 'docker'
+        state: present
+    - name: Ensure user 'ubuntu' added to 'docker' group
       user:
         name: ubuntu
-        shell: /bin/bash
         groups: docker
-        append: yes
-      become: yes
+        append: true
+    - name: Ensure docker daemon is enabled
+      service:
+        name: docker
+        enabled: yes
   post_tasks:
     - name: Rebooting
       reboot:
-      become: yes
-
-
+    - name: Check current docker-compose version.
+      command: docker-compose --version
+      register: docker_compose_current_version
+      changed_when: false
+      failed_when: false
+    - debug:
+        var: docker_compose_current_version
