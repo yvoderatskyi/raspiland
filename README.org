@@ -6,7 +6,7 @@ This project contains configurations for my Raspberry Pi (RPi)
 
 * Pre-requisites
 *** Your machine
- - [X] =Arch= based OS (for example, =Manjaro=) with =yay= package installed
+ - [X] =Arch= based OS (for example, =Manjaro=) with =yay -Sy rpi-imager wireless_tools yank= packages installed
  - [X] =Python 3.7+= and =poetry= installed
 *** Raspberry
  - [X] Internet connectivity: Ethernet or Wi-Fi
@@ -16,28 +16,14 @@ This project contains configurations for my Raspberry Pi (RPi)
   :header-args: :tangle 10-prepare-sd-card.sh :comments both
   :END:
 *** Plug-in the SD card
-*** Install =Raspberry Pi Imager=: The official app to flash RPi images
-    #+BEGIN_SRC shell :results output
-      echo 'Installing rpi-imager from AUR if not installed...'
-      test rpi-imager || yay -Sy rpi-imager
-    #+END_SRC
-
-    #+RESULTS:
-    : Installing rpi-imager from AUR if not installed
-
 *** Flash =Ubuntu= to the SD card
-    #+BEGIN_SRC shell
-      echo ''
-      echo 'Please, wait until flashing and verification is complete. Once done, reconnect the card before closing the program.'
-      rpi-imager > /dev/null 2>&1
-    #+END_SRC
     Select =Operating System=, =SD Card= and click on =WRITE= button. Wait for completion of the installation and verification.
     [[./images/pi-imager.png]]
 *** Configure Wi-Fi and SSH
     #+BEGIN_SRC shell
       echo ''
       echo 'Please select your WI-Fi interface and network for RPi to connect to...'
-      SSID=$(ip link | grep -Po "(?<=^\d:\W).*?(?=:)" | yank | xargs -I % sh -c 'sudo iwlist % scan' | grep -Po "(?<=ESSID:\").*(?=\")" | sort | yank -l)
+      SSID=$(ip link | grep -Po "(?<=^\d:\W).*?(?=:)" | yank | xargs -I % sh -c 'sudo iwlist % scan' | grep -Po "(?<=ESSID:\").*(?=\")" | sort | yank -l) || exit -1
       [ -n $SSID ] || exit -1
 
       echo ''
@@ -67,9 +53,8 @@ This project contains configurations for my Raspberry Pi (RPi)
       wifis:
         wlan0:
           dhcp4: true
-          optional: true
           access-points:
-            ${SSID}:
+            "${SSID}":
               password: "${PASSWORD}"
       EOF
     #+END_SRC
