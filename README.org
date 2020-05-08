@@ -104,8 +104,8 @@ This project contains configurations for my Raspberry Pi (RPi)
     192.168.1.112              : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
     #+END_EXAMPLE
 * Links
+- Ubuntu Raspberry Pi: https://ubuntu.com/download/raspberry-pi 
 - Raspbian: https://www.raspberrypi.org/downloads/raspbian/
-- Raspbian Wi-Fi: https://www.raspberrypi.org/documentation/configuration/wireless/wireless-cli.md
 - Raspbian SSH: https://www.raspberrypi.org/documentation/remote-access/ssh/
 - Raspbian passwordless SSH: https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
 - Ansible Documentation: https://docs.ansible.com/
