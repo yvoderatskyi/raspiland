@@ -18,19 +18,55 @@ This project contains configurations for my Raspberry Pi (RPi)
 *** Plug-in the SD card
 *** Install =Raspberry Pi Imager=: The official app to flash RPi images
     #+BEGIN_SRC shell :results output
-      yay -Sy rpi-imager
-      whereis rpi-imager
+      echo 'Installing rpi-imager from AUR if not installed...'
+      test rpi-imager || yay -Sy rpi-imager
     #+END_SRC
 
     #+RESULTS:
-    : rpi-imager: /usr/bin/rpi-imager
+    : Installing rpi-imager from AUR if not installed
 
 *** Flash =Ubuntu= to the SD card
     #+BEGIN_SRC shell
-      rpi-imager
+      echo ''
+      echo 'Please, wait until flashing and verification is complete. Once done, reconnect the card before closing the program.'
+      rpi-imager > /dev/null 2>&1
     #+END_SRC
     Select =Operating System=, =SD Card= and click on =WRITE= button. Wait for completion of the installation and verification.
     [[./images/pi-imager.png]]
+*** Configure Wi-Fi and SSH
+    #+BEGIN_SRC shell
+      echo ''
+      echo 'Please select your WI-Fi interface and network for RPi to connect to...'
+      SSID=$(ip link | grep -Po "(?<=^\d:\W).*?(?=:)" | yank | xargs -I % sh -c 'sudo iwlist % scan' | grep -Po "(?<=ESSID:\").*(?=\")" | yank -l)
+      [ -n $SSID ] || exit -1
+      echo ''
+      echo "Please, enter the password to connect to ${SSID}"
+      echo -n 'Password:'
+      read -s PASSWORD
+      echo "RPi will connect to ${SSID} network using password ${PASSWORD}."
+
+      echo ''
+      echo 'Please, select where system boot partition is mounted...'
+      MNT_DIR=$(sudo mount | yank)
+      [ -n $MTN_DIR ] || exit -1
+      echo "System boot parition is mounted to ${MNT_DIR}"
+      echo "Creating empty file at ${MNT_DIR}/ssh"
+      [ -f ${MNT_DIR}/ssh ] || sudo tee -a ${MNT_DIR}/ssh < "" || echo exit -1
+      echo "Disabling expiration of the user"
+      sudo sed -i.bak 's/expire:\ true/expire: false/' ${MNT_DIR}/user-data
+      sudo tee -a ${MNT_DIR}/network-config <<EOF
+      wifis:
+        wlan0:
+          dhcp4: true
+          optional: true
+          access-points:
+            ${SSID}:
+              password: "${PASSWORD}"
+      EOF
+    #+END_SRC
+
+    #+RESULTS:
+
 * Let's get started
 ** Check SSH connection
     #+BEGIN_SRC shell :tangle 20-check.sh :comments both
