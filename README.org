@@ -1,5 +1,6 @@
 #+TITLE: Raspiland
 #+AUTHOR: Yurii Voderatskyi
+#+DESCRIPTION: This project aims to automate configuration of my RPi
 
 * Pre-requisites
 ** Raspberry
