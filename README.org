@@ -13,7 +13,7 @@ This project contains configurations for my Raspberry Pi (RPi)
  - [X] SSH access enabled
 * Preparing for RPi OS for installation
   :PROPERTIES:
-  :header-args: :tangle prepare-sd-card.sh :comments both
+  :header-args: :tangle 10-prepare-sd-card.sh :comments both
   :END:
 *** Plug-in the SD card
 *** Install =Raspberry Pi Imager=: The official app to flash RPi images
@@ -21,6 +21,10 @@ This project contains configurations for my Raspberry Pi (RPi)
       yay -Sy rpi-imager
       whereis rpi-imager
     #+END_SRC
+
+    #+RESULTS:
+    : rpi-imager: /usr/bin/rpi-imager
+
 *** Flash =Ubuntu= to the SD card
     #+BEGIN_SRC shell
       rpi-imager
@@ -29,7 +33,7 @@ This project contains configurations for my Raspberry Pi (RPi)
     [[./images/pi-imager.png]]
 * Let's get started
 ** Check SSH connection
-    #+BEGIN_SRC shell :tangle check.sh :comments both
+    #+BEGIN_SRC shell :tangle 20-check.sh :comments both
       poetry run ansible all -i hosts.ini -m ping -u pi --ask-pass
     #+END_SRC
  
