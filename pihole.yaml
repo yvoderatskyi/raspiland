@@ -1,10 +1,11 @@
 ---
 - hosts: raspberry
-  tasks:
+  pre_tasks:
     - name: Update all packages to the latest version
       apt:
         upgrade: dist
       become: yes
+  tasks:
     - name: Install additional packages
       apt:
         pkg:
@@ -19,6 +20,7 @@
         groups: docker
         append: yes
       become: yes
+  post_tasks:
     - name: Rebooting
       reboot:
       become: yes
