@@ -1,0 +1,28 @@
+#+TITLE: Raspiland
+#+AUTHOR: Yurii Voderatskyi
+
+* Pre-requisites
+- [X] Raspbian: the oficial OS for the Raspberry Pi.
+- [X] Wi-Fi access configured
+- [X] SSH access enabled
+- [X] Ansible installed on the host machine 
+* Connectivity verification
+  #+BEGIN_SRC shell :tangle check.sh :comments both
+    ansible all -i hosts.ini -m ping -u pi --ask-pass
+  #+END_SRC
+
+  #+BEGIN_EXAMPLE
+  ➜  ansible-host ansible all -i hosts.ini -m ping -u pi --ask-pass
+  SSH password:
+  [WARNING]: Platform linux on host 192.168.1.112 is using the discovered Python interpreter at
+  /usr/bin/python, but future installation of another Python interpreter could change this. See
+  https://docs.ansible.com/ansible/2.9/reference_appendices/interpreter_discovery.html for more
+  information.
+  192.168.1.112 | SUCCESS => {
+  "ansible_facts": {
+    "discovered_interpreter_python": "/usr/bin/python"
+  },
+    "changed": false,
+    "ping": "pong"
+  }
+  #+END_EXAMPLE
