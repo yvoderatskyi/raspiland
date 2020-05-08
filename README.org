@@ -37,7 +37,7 @@ This project contains configurations for my Raspberry Pi (RPi)
     #+BEGIN_SRC shell
       echo ''
       echo 'Please select your WI-Fi interface and network for RPi to connect to...'
-      SSID=$(ip link | grep -Po "(?<=^\d:\W).*?(?=:)" | yank | xargs -I % sh -c 'sudo iwlist % scan' | grep -Po "(?<=ESSID:\").*(?=\")" | yank -l)
+      SSID=$(ip link | grep -Po "(?<=^\d:\W).*?(?=:)" | yank | xargs -I % sh -c 'sudo iwlist % scan' | grep -Po "(?<=ESSID:\").*(?=\")" | sort | yank -l)
       [ -n $SSID ] || exit -1
 
       echo ''
