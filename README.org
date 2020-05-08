@@ -2,11 +2,13 @@
 #+AUTHOR: Yurii Voderatskyi
 
 * Pre-requisites
-- [X] Raspbian: the oficial OS for the Raspberry Pi.
+** Raspberry
+- [X] Raspbian: the official OS for the Raspberry Pi.
 - [X] Internet connectivity: Ethernet or Wi-Fi
-- [X] SSH access enabled on Raspberry Pi
+- [X] SSH access enabled
+** Your machine
 - [X] sshpass installed
-- [X] Python 3 and poetry installed on your machine
+- [X] Python 3.7+ and poetry installed
 * Let's get started
 ** Check SSH connection
     #+BEGIN_SRC shell :tangle check.sh :comments both
