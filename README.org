@@ -77,8 +77,11 @@ This project contains configurations for my Raspberry Pi (RPi)
     #+RESULTS:
 
 * Let's get started
+  :PROPERTIES:
+  :header-args: :tangle 20-install.sh :comments both
+  :END:
 ** Check SSH connection
-    #+BEGIN_SRC shell :tangle 20-check.sh :comments both
+    #+BEGIN_SRC shell
       poetry run ansible raspberry -i hosts.ini -m ping -u pi --ask-pass
     #+END_SRC
  
