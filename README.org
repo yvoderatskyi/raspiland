@@ -1,13 +1,15 @@
 #+TITLE: Raspiland
 #+AUTHOR: Yurii Voderatskyi
-#+DESCRIPTION: This project aims to automate configuration of my RPi
+#+DESCRIPTION: This project aims to automate configuration of my Raspberry Pi (RPi)
+
+This project contains configurations for my Raspberry Pi (RPi)
 
 * Preparing SD card
   :PROPERTIES:
   :header-args: :tangle prepare-sd-card.sh :comments both
   :END:
 *** Plug-in the SD card
-*** Install Raspberry Pi Imager
+*** Install Raspberry Pi Imager: The official app to flash RPi images
     #+BEGIN_SRC shell :results output
       yay -Sy rpi-imager
       whereis rpi-imager
@@ -16,6 +18,8 @@
     #+BEGIN_SRC shell
       rpi-imager
     #+END_SRC
+    Select =Operating System=, =SD Card= and click on =WRITE= button. Wait for completion of the installation and verification.
+    [[./images/pi-imager.png]]
 * Pre-requisites
 ** Raspberry
 - [X] Raspbian: the official OS for the Raspberry Pi.
