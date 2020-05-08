@@ -43,10 +43,6 @@ This project contains configurations for my Raspberry Pi (RPi)
       [ -f ${MNT_DIR}/ssh ] || sudo tee -a ${MNT_DIR}/ssh < "" || echo exit -1
 
       echo ''
-      echo "Disabling expiration of the user"
-      sudo sed -i.bak 's/expire:\ true/expire: false/' ${MNT_DIR}/user-data
-
-      echo ''
       echo ''
       echo "Setting Wi-Fi configuration to ${MNT_DIR}/network-config"
       sudo tee -a ${MNT_DIR}/network-config <<EOF
