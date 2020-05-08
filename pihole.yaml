@@ -12,4 +12,15 @@
         - docker-compose
         - docker.io
       become: yes
+    - name: Alter user 'ubuntu' to allow access to 'docker'
+      user:
+        name: ubuntu
+        shell: /bin/bash
+        groups: docker
+        append: yes
+      become: yes
+    - name: Rebooting
+      reboot:
+      become: yes
+
 
