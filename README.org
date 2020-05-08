@@ -4,16 +4,17 @@
 * Pre-requisites
 - [X] Raspbian: the oficial OS for the Raspberry Pi.
 - [X] Internet connectivity: Ethernet or Wi-Fi
-- [X] SSH access enabled
-- [X] Ansible installed on the host machine
+- [X] SSH access enabled on Raspberry Pi
+- [X] sshpass installed
+- [X] Python 3 and poetry installed on your machine
 * Let's get started
 ** Check SSH connection
     #+BEGIN_SRC shell :tangle check.sh :comments both
-      ansible all -i hosts.ini -m ping -u pi --ask-pass
+      poetry run ansible all -i hosts.ini -m ping -u pi --ask-pass
     #+END_SRC
  
      #+BEGIN_EXAMPLE
-     ➜  ansible-host ansible all -i hosts.ini -m ping -u pi --ask-pass
+     ➜  poetry run ansible-host ansible all -i hosts.ini -m ping -u pi --ask-pass
      SSH password:
      [WARNING]: Platform linux on host 192.168.1.112 is using the discovered Python interpreter at
      /usr/bin/python, but future installation of another Python interpreter could change this. See
