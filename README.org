@@ -78,7 +78,7 @@ This project contains configurations for my Raspberry Pi (RPi)
    #+END_EXAMPLE
 *** Provision machine
     #+BEGIN_SRC shell
-      poetry run ansible-playbook -i hosts.ini pihole.yaml
+      poetry run ansible-playbook -i hosts.ini site.yaml
     #+END_SRC
 
     #+BEGIN_EXAMPLE

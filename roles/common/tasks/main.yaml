@@ -1,0 +1,5 @@
+---
+- name: Ensure latest updates installed
+  apt:
+    upgrade: dist
+    update_cache: true

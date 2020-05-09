@@ -1,0 +1,19 @@
+---
+- name: Install docker packages
+  apt:
+    pkg:
+      - python3-pip
+      - docker-compose
+      - docker.io
+    state: present
+- name: Ensure remote user can run 'docker' commands
+  user:
+    name: ubuntu
+    groups: docker
+    append: true
+  notify:
+    - restart host
+- name: Ensure docker service enabled
+  service:
+    name: docker
+    enabled: true
