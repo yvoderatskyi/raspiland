@@ -3,3 +3,15 @@
   apt:
     upgrade: dist
     update_cache: true
+- name: Ensure 'net-tools' installed
+  apt:
+    name: net-tools
+    state: present
+- name: Disable local DNS
+  lineinfile:
+    path: /etc/systemd/resolved.conf
+    line: DNSStubListener=no
+- name: Enable systemd-networkd and systemd-resolved
+  service:
+    name: "systemd-resolved"
+    state: restarted

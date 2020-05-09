@@ -13,7 +13,7 @@
     append: true
   notify:
     - restart host
-- name: Ensure docker service enabled
+- name: Ensure 'docker' daemon enabled
   service:
     name: docker
     enabled: true

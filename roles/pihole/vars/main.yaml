@@ -1,2 +1,2 @@
 ---
-pihole_docker_image: pihole/pihole:latest
+pihole_docker_image: pihole/pihole:v4.4

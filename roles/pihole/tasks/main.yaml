@@ -3,3 +3,23 @@
   docker_image:
     name: "{{ pihole_docker_image }}"
     source: pull
+
+- name: Ensure pi-hole container started
+  docker_container:
+    name: pihole
+    image: "{{ pihole_docker_image }}"
+    state: started
+    restart: true
+    restart_policy: unless-stopped
+    network_mode: host
+    volumes: 
+      - /home/ubuntu/pihole/etc-pihole/:/etc/pihole/
+      - /home/ubuntu/pihole/etc-dnsmasq.d/:/etc/dnsmasq.d/
+    env:
+      TZ: "Europe/Berlin"
+      WEBPASSWORD: ubuntu
+    dns_servers:
+      - 127.0.0.1
+      - 1.1.1.1
+    capabilities:
+      - all
