@@ -1,0 +1,2 @@
+---
+pihole_docker_image: pihole/pihole:latest

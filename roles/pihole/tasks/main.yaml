@@ -1,0 +1,5 @@
+---
+- name: Pull pi-hole Docker image
+  docker_image:
+    name: "{{ pihole_docker_image }}"
+    source: pull
