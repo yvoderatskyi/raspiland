@@ -1,7 +1,9 @@
 
-* TODO Limit container resources 
-* TODO Configure img2ram
-  Avoid exessive writing of logs to SD card by keepening them in RAM and syncing to the disk once a day.
-* TODO Monitoring
+* TODO [#A] Pihole doesn't start as port =80= is not free 
+* TODO [#B] Limit container resources 
+* TODO [#B] Monitoring
   I would like to monitor RPi using cloud monitoring services. For example, GCP Monitoring could be an option. I would need to write a component to read system stats and push them to GCP using a service account.
- 
+
+* TODO [#C] Configure img2ram
+  Avoid exessive writing of logs to SD card by keepening them in RAM and syncing to the disk once a day.
+
