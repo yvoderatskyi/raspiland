@@ -1,0 +1,2 @@
+* TODO Configure img2ram
+  Avoid exessive writing of logs to SD card by keepening them in RAM and syncing to the disk once a day.

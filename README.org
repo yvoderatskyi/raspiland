@@ -109,3 +109,5 @@ This project contains configurations for my Raspberry Pi (RPi)
 - Raspbian SSH: https://www.raspberrypi.org/documentation/remote-access/ssh/
 - Raspbian passwordless SSH: https://www.raspberrypi.org/documentation/remote-access/ssh/passwordless.md
 - Ansible Documentation: https://docs.ansible.com/
+* What's next
+  Todo file with ideas can be found [[file:TODOs.org][here]]
