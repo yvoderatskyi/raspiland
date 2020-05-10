@@ -1,4 +1,12 @@
 ---
+- name: Disable local DNS
+  lineinfile:
+    path: /etc/systemd/resolved.conf
+    line: DNSStubListener=no
+- name: Enable systemd-networkd and systemd-resolved
+  service:
+    name: "systemd-resolved"
+    state: restarted
 - name: Pull pi-hole Docker image
   docker_image:
     name: "{{ pihole_docker_image }}"
