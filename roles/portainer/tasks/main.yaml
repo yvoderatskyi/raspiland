@@ -1,1 +1,19 @@
 ---
+- name: Pull 'Portainer' Docker image
+  docker_image:
+    name: "portainer/portainer:latest"
+    source: pull
+- name: Ensure 'Portainer' container started
+  docker_container:
+    name: portainer
+    image: "portainer/portainer:latest"
+    state: started
+    restart: true
+    ports:
+      - "8000:8000"
+      - "9000:9000"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    capabilities:
+      - all
+
