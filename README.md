@@ -1,28 +1,28 @@
 
 # Table of Contents
 
-1.  [Pre-requisites](#orgd7157a2)
-        1.  [Your machine](#orgba91abb)
-        2.  [Raspberry](#org1067086)
-2.  [Preparing for RPi OS for installation](#org0c8d0dc)
-        1.  [Plug-in the SD card](#org6a636e3)
-        2.  [Flash `Ubuntu` to the SD card](#org82d6b6d)
-        3.  [Configure Wi-Fi and SSH](#org27bab38)
-3.  [Let's get started](#org1cd169d)
-        1.  [Check SSH connection](#orgcb3c733)
-        2.  [Provision the machine](#org0eb4a43)
-4.  [Links](#orgb623378)
-5.  [What's next](#org8690685)
+1.  [Pre-requisites](#org740b443)
+        1.  [Your machine](#orga937f6e)
+        2.  [Raspberry](#org375f9ef)
+2.  [Preparing for RPi OS for installation](#org7afc78d)
+        1.  [Plug-in the SD card](#org9126236)
+        2.  [Flash `Ubuntu` to the SD card](#orgceb7b36)
+        3.  [Configure Wi-Fi and SSH](#org41777fd)
+3.  [Let's get started](#org96928ab)
+        1.  [Check SSH connection](#org12ec9e0)
+        2.  [Provision the machine](#org8e8cdc7)
+4.  [Links](#org02870ea)
+5.  [What's next](#org5854013)
 
 This project contains configurations for my Raspberry Pi (RPi)
 
 
-<a id="orgd7157a2"></a>
+<a id="org740b443"></a>
 
 # Pre-requisites
 
 
-<a id="orgba91abb"></a>
+<a id="orga937f6e"></a>
 
 ### Your machine
 
@@ -30,7 +30,7 @@ This project contains configurations for my Raspberry Pi (RPi)
 -   [X] `Python 3.7+` and `poetry` installed
 
 
-<a id="org1067086"></a>
+<a id="org375f9ef"></a>
 
 ### Raspberry
 
@@ -38,17 +38,17 @@ This project contains configurations for my Raspberry Pi (RPi)
 -   [X] SSH access enabled
 
 
-<a id="org0c8d0dc"></a>
+<a id="org7afc78d"></a>
 
 # Preparing for RPi OS for installation
 
 
-<a id="org6a636e3"></a>
+<a id="org9126236"></a>
 
 ### Plug-in the SD card
 
 
-<a id="org82d6b6d"></a>
+<a id="orgceb7b36"></a>
 
 ### Flash `Ubuntu` to the SD card
 
@@ -56,7 +56,7 @@ Select `Operating System`, `SD Card` and click on `WRITE` button. Wait for compl
 ![img](./images/pi-imager.png)
 
 
-<a id="org27bab38"></a>
+<a id="org41777fd"></a>
 
 ### Configure Wi-Fi and SSH
 
@@ -94,12 +94,12 @@ Select `Operating System`, `SD Card` and click on `WRITE` button. Wait for compl
     EOF
 
 
-<a id="org1cd169d"></a>
+<a id="org96928ab"></a>
 
 # Let's get started
 
 
-<a id="orgcb3c733"></a>
+<a id="org12ec9e0"></a>
 
 ### Check SSH connection
 
@@ -115,7 +115,7 @@ Select `Operating System`, `SD Card` and click on `WRITE` button. Wait for compl
     }
 
 
-<a id="org0eb4a43"></a>
+<a id="org8e8cdc7"></a>
 
 ### Provision the machine
 
@@ -143,7 +143,7 @@ Select `Operating System`, `SD Card` and click on `WRITE` button. Wait for compl
     192.168.1.112              : ok=5    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0
 
 
-<a id="orgb623378"></a>
+<a id="org02870ea"></a>
 
 # Links
 
@@ -154,7 +154,7 @@ Select `Operating System`, `SD Card` and click on `WRITE` button. Wait for compl
 -   Ansible Documentation: <https://docs.ansible.com/>
 
 
-<a id="org8690685"></a>
+<a id="org5854013"></a>
 
 # What's next
 
