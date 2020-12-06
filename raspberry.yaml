@@ -3,7 +3,11 @@
   become: yes
   roles:
     - common
-    - docker
-    - pihole
-    - portainer
+    - python
+    - docker-raspbian
+    - home-assistant
+    - heimdall
+    # - docker
+    # - pihole
+    # - portainer
 

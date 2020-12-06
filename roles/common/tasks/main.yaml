@@ -7,3 +7,15 @@
   apt:
     name: net-tools
     state: present
+- name: Ensure 'pi' group exists
+  group:
+    name: pi
+    gid: '{{ uid }}'
+    state: 'present'
+- name: Ensure 'pi' user exists
+  user:
+    uid: '{{ gid }}'
+    name: pi
+    group: pi
+    comment: Raspberry Pi user
+    state: 'present'

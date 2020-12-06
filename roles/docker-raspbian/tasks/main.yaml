@@ -1,0 +1,55 @@
+---
+- name: Check docker installed already
+  shell: docker version
+  register: docker_exists
+  ignore_errors: yes
+- name: Remove obsolete docker packages
+  apt:
+    pkg:
+      - docker.io
+      - docker-engine
+    state: absent
+- name: Install docker dependencies
+  apt:
+    pkg:
+      - apt-transport-https 
+      - ca-certificates 
+      - software-properties-common
+      - python-docker      
+    state: present
+- name: Download docker.sh
+  get_url:
+    url: https://get.docker.com/
+    dest: /tmp/docker.sh
+    mode: '0644'
+  when: docker_exists is failed
+- name: Run docker.sh
+  shell: /tmp/docker.sh
+  when: docker_exists is failed
+- name: Ensure 'docker' group exists
+  group:
+    name: docker
+    state: present  
+- name: Ensure pi user can run can use docker
+  user:
+    name: pi
+    groups: [docker]
+    append: true
+    state: present
+- name: Import docker gpg key
+  apt_key:
+    url: https://download.docker.com/linux/raspbian/gpg
+    state: present
+- name: Configure docker repo
+  apt_repository:
+      repo: 'deb https://download.docker.com/linux/raspbian/ stretch stable'
+      state: present
+      update_cache: True
+
+- name: Enable docker service
+  service:
+    name: docker
+    enabled: yes
+- name: Reboot
+  reboot:
+  when: docker_exists is failed

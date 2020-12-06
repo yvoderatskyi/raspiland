@@ -1,0 +1,24 @@
+---
+- name: Create 'Home Assistant' config directory
+  file:
+    path: "{{ha_config_dir}}"
+    state: directory
+    mode: "0755"
+- name: Ensure 'Home Assistant' docker image pulled
+  docker_image:
+    name: "{{ ha_docker_image }}"
+    source: pull
+- name: Ensure 'Home Assistant' container is running
+  docker_container:
+    name: homeassistant
+    state: started
+    restart: yes
+    restart_policy: unless-stopped
+    image: "{{ ha_docker_image }}"
+    init: yes
+    network_mode: host
+    user: "{{ uid }}:{{ gid }}"
+    env: 
+      TZ: Europe/Berlin
+    volumes:
+      - "{{ha_config_dir}}:/config"
